@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { Employees } from '../imports/collections/employees.jsx';
 import { image, helpers } from 'faker';
 
+
 Meteor.startup(() => {
 
     // see if the collection has any records
@@ -21,4 +22,8 @@ Meteor.startup(() => {
             });
         });
     }
+
+    Meteor.publish('employees', () => {
+        return Employees.find({}, { limit: 20 });
+    });
 });
