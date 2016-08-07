@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Employees } from '../../imports/collections/employees.jsx';
+import EmployeeDetail from './employee_detail.jsx';
 
 
 class EmployeeList extends Component {
@@ -23,7 +24,11 @@ class EmployeeList extends Component {
         return (
             <div>
                 <div className="employee-list">
-                    Employee List
+                    {
+                        this.props.employees.map(
+                            employee => <EmployeeDetail key={employee._id} employee={employee} />
+                            )
+                        }
                 </div>
             </div>
         );
